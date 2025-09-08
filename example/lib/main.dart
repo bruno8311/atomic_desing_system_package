@@ -15,6 +15,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
+      // ---------------------------------------------
+      // Para usar los componentes del sistema de diseño importa:
+      // import 'package:atomic_desing_system_package/atomic_desing_system_package.dart';
+      //
+      // Ejemplo de uso de un botón atómico:
+      // AtomButton(
+      //   onPressed: () {},
+      //   child: Text('Botón atómico'),
+      // );
+      //
+      // Para ver todos los elementos y su implementación ejecuta este ejemplo,
+      // verás el showcase interactivo con cada componente y plantilla.
+      // ---------------------------------------------
       home: HomeShowcaseMenuList(),
       debugShowCheckedModeBanner: false,
     );
