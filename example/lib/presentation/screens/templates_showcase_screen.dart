@@ -42,6 +42,11 @@ class TemplatesShowcaseScreen extends StatelessWidget {
               },
             ),
             TemplateDashboardPage(
+              headerOnSearch: (text) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Se buscó el valor $text')),
+                );
+              },
               headerUserName: 'Bruno',
               headerUserImageUrl: 'https://scontent.fcix3-1.fna.fbcdn.net/v/t1.6435-9/199385759_345470910277839_3988273979229903886_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeH7nnrp8wBNTp6_IgBDlx4c_R1YrUnrs9b9HVitSeuz1qjz6pU0reOGKOt2lqfHuG3Z2vIJBoKwfwvTfoHsur02&_nc_ohc=SeLkX0AzpJ8Q7kNvwE5gnnO&_nc_oc=AdnaTHWop5iCzio4Pc5MmGZ0Hc9LMDWp3Ius52QP2VY8dxI0FxwgNmZKgn-ZHiEsdJQ&_nc_zt=23&_nc_ht=scontent.fcix3-1.fna&_nc_gid=_l-2szaZj-DvM7Mp2tQEgA&oh=00_AfaUKaW7SAHaATjQoGViPoXSmKJAwaJYcVpNrhHSp-jVlA&oe=68E587CF',
               headerPaddingHorizontal: 24,

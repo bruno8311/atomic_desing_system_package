@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../organisms/organism.dart';
 
 import 'package:atomic_desing_system_package/core/constants/app_colors.dart';
-import 'package:atomic_desing_system_package/presentation/organisms/lists/organism_list_icon_card.dart';
 
+typedef HeaderOnSearchCallback = void Function(String value);
 
 class TemplateDashboardPage extends StatefulWidget {
 
@@ -14,6 +14,7 @@ class TemplateDashboardPage extends StatefulWidget {
   final double headerPaddingVertical;
   final String headerHintText;
   final bool headerShowBackArrow;
+  final HeaderOnSearchCallback? headerOnSearch;
 
   // Body (Carousels)
   final List<String> bodyCarouselsTitles;
@@ -44,6 +45,8 @@ class TemplateDashboardPage extends StatefulWidget {
     this.headerPaddingVertical = 20,
     this.headerHintText = 'Buscar',
     this.headerShowBackArrow = false,
+    this.headerOnSearch,
+
     // Body
     this.bodyCardHeaderTitle,
     required this.bodyCardIcons,
@@ -96,6 +99,7 @@ class _TemplateDashboardPageState extends State<TemplateDashboardPage> {
             searchController: _searchController,
             hintText: widget.headerHintText,
             showBackArrow: widget.headerShowBackArrow,
+            onSearch: widget.headerOnSearch,
           ),
           Expanded(
             child: ListView(

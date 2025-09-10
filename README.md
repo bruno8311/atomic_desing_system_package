@@ -4,7 +4,7 @@
 Paquete de sistema de diseño para Flutter basado en los principios de Atomic Design.
 
 ## Getting started
-fake_store_api_package: 2
+fake_store_api_package: 3
 
 ## Usage
 

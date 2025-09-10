@@ -4,7 +4,7 @@ import '../../atoms/atoms.dart';
 class MoleculeSearchBar extends StatelessWidget {
   final String? label;
   final TextEditingController controller;
-  final VoidCallback? onSearch;
+  final void Function(String)? onSearch;
   final IconData icon;
   final String? hintText;
 
@@ -53,7 +53,9 @@ class MoleculeSearchBar extends StatelessWidget {
               ),
               IconButton(
                 icon: AtomIcon(icon: icon, color: Colors.grey[700]),
-                onPressed: onSearch,
+                onPressed: onSearch != null
+                    ? () => onSearch!(controller.text)
+                    : null,
               ),
             ],
           ),

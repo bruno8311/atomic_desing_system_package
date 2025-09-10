@@ -51,9 +51,9 @@ class MoleculesShowcaseScreen extends StatelessWidget {
             label: 'Buscar',
             controller: TextEditingController(),
             icon: Icons.search,
-            onSearch: () {
-             ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Buscar presionado')),
+            onSearch: (text) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Se buscó el valor $text')),
               );
             },
           ),

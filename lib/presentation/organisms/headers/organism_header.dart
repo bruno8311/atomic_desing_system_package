@@ -16,7 +16,7 @@ class OrganismHeader extends StatelessWidget {
   final TextEditingController? searchController;
   final String? searchLabel;
   final IconData? searchIcon;
-  final VoidCallback? onSearch;
+  final void Function(String)? onSearch;
   final String? hintText;
   final bool showBackArrow;
 
@@ -34,7 +34,7 @@ class OrganismHeader extends StatelessWidget {
     this.searchController,
     this.searchLabel,
     this.searchIcon,
-    this.onSearch,
+  this.onSearch,
     this.hintText,
     this.showBackArrow = false,
   });
