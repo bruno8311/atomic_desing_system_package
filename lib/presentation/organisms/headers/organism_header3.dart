@@ -3,36 +3,29 @@ import 'package:atomic_desing_system_package/presentation/molecules/molecules.da
 import 'package:atomic_desing_system_package/presentation/atoms/atoms.dart';
 import 'package:atomic_desing_system_package/core/constants/app_colors.dart';
 
-class OrganismHeader extends StatelessWidget {
+class OrganismHeader3 extends StatelessWidget {
   final double? userNameFontSize;
   final double? avatarRadius;
   final String imageUrl;
   final String userName;
   final Axis direction;
   final double spacing;
-  final String title;
   final MainAxisAlignment alignment;
   final EdgeInsetsGeometry? padding;
   final Color? backgroundColor;
   final double paddingHorizontal;
   final double paddingVertical;
-  final TextEditingController? searchController;
-  final String? searchLabel;
-  final IconData? searchIcon;
-  final void Function(String)? onSearch;
-  final String? hintText;
+  final String title;
   final bool showBackArrow;
   final VoidCallback onLogout;
-  final VoidCallback onHome;
+  final VoidCallback? onHome;
 
-  const OrganismHeader({
+  const OrganismHeader3({
     super.key,
     required this.imageUrl,
     required this.userName,
-    required this.searchController,
-    required this.title,
-    required this.onLogout,
-    required this.onHome,
+    this.userNameFontSize,
+    this.avatarRadius,
     this.direction = Axis.horizontal,
     this.spacing = 16.0,
     this.alignment = MainAxisAlignment.end,
@@ -40,13 +33,10 @@ class OrganismHeader extends StatelessWidget {
     this.backgroundColor,
     this.paddingHorizontal = 16,
     this.paddingVertical = 12,
-    this.searchLabel,
-    this.searchIcon,
-    this.onSearch,
-    this.hintText,
+    required this.title,
     this.showBackArrow = false,
-    this.userNameFontSize,
-    this.avatarRadius,
+    required this.onLogout,
+    required this.onHome,
   });
 
   @override
@@ -54,8 +44,8 @@ class OrganismHeader extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(
         left: 0,
-        right: paddingHorizontal,
         top: paddingVertical + 16,
+        right: paddingHorizontal,
         bottom: paddingVertical,
       ),
       decoration: BoxDecoration(
@@ -66,12 +56,12 @@ class OrganismHeader extends StatelessWidget {
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Avatar y nombre a la izquierda (no crece)
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -82,6 +72,7 @@ class OrganismHeader extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).maybePop();
                       },
+                      size: 20,
                       padding: EdgeInsets.symmetric(horizontal: 0),
                     ),
                   Padding(
@@ -95,30 +86,14 @@ class OrganismHeader extends StatelessWidget {
                   ),
                 ],
               ),
-              // Título flexible y centrado
-              Flexible(
-                child: Center(
-                  child: AtomLabel(
-                    text: title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ),
-              ),
-              // Iconos a la derecha (no crecen)
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   AtomIconButton(
                     icon: Icons.notifications,
                     iconColor: Colors.white,
-                    size: 15,
+                    size: 18,
                     padding: EdgeInsets.zero,
-                    spacing: 0,
                     onPressed: () {
                       showDialog(
                         context: context,
@@ -132,17 +107,15 @@ class OrganismHeader extends StatelessWidget {
                   AtomIconButton(
                     icon: Icons.home,
                     iconColor: Colors.white,
-                    size: 15,
+                    size: 18,
                     padding: EdgeInsets.zero,
-                    spacing: 0,
-                    onPressed: onHome,
+                    onPressed: onHome
                   ),
                   AtomIconButton(
                     icon: Icons.logout,
                     iconColor: Colors.white,
-                    size: 15,
+                    size: 18,
                     padding: EdgeInsets.zero,
-                    spacing: 0,
                     onPressed: () {
                       MoleculeConfirmModal.show(
                         context: context,
@@ -163,16 +136,18 @@ class OrganismHeader extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-            Padding(
-              padding: EdgeInsets.only(left: paddingHorizontal),
-              child: MoleculeSearchBar(
-                label: searchLabel,
-                controller: searchController!,
-                icon: searchIcon ?? Icons.search,
-                onSearch: onSearch,
-                hintText: hintText,
+          Center(
+            child: AtomLabel(
+              text: title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                overflow: TextOverflow.ellipsis,
               ),
+              // Si AtomLabel no soporta overflow, reemplazar por AtomText o Text
             ),
+          ),
         ],
       ),
     );

@@ -19,24 +19,53 @@ class OrganismsShowcaseScreen extends StatelessWidget {
         children: [
           const Text('Header con buscador:', style: TextStyle(fontWeight: FontWeight.bold)),
           OrganismHeader(
+            title: 'Valor',
             onSearch: (text) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Se buscó el valor $text')),
               );
             },
             imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            userName: 'Bruno Salazar',
+            userName: 'Bruno',
             backgroundColor: const Color.fromARGB(255, 9, 102, 168),
             paddingHorizontal: 20,
             paddingVertical: 16,
             searchController: searchController,
             hintText: 'Buscar',
+            onHome: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Home')),
+              );
+            },
+            onLogout: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Logout')),
+              );
+            },
+          ),
+          const SizedBox(height: 24),
+          const Text('Header base', style: TextStyle(fontWeight: FontWeight.bold)),
+          OrganismHeader3(
+            imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            userName: 'Bruno',
+            title: 'Home',
+            backgroundColor: const Color.fromARGB(255, 9, 102, 168),
+            paddingHorizontal: 20,
+            paddingVertical: 16,
+            onHome: () => ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Home')),
+            ),
+            onLogout: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Logout')),
+              );
+            },
           ),
           const SizedBox(height: 24),
           const Text('Header con icono:', style: TextStyle(fontWeight: FontWeight.bold)),
           OrganismHeader2(
             imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            userName: 'Bruno Salazar',
+            userName: 'Bruno',
             icon: Icons.more_vert,
             onIconPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(

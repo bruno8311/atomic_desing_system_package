@@ -5,19 +5,31 @@ class MoleculeAvatarWithName extends StatelessWidget {
   final String imageUrl;
   final String name;
   final Color? textColor;
-  const MoleculeAvatarWithName({super.key, required this.imageUrl, required this.name, this.textColor});
+  final double? fontSize;
+  final double? avatarRadius;
+  const MoleculeAvatarWithName({
+    super.key,
+    required this.imageUrl,
+    required this.name,
+    this.textColor,
+    this.fontSize,
+    this.avatarRadius,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        AtomAvatar(imageUrl: imageUrl),
+        AtomAvatar(
+          imageUrl: imageUrl,
+          radius: avatarRadius ?? 24,
+        ),
         const SizedBox(width: 8),
         AtomLabel(
           text: name,
           style: TextStyle(
             color: textColor ?? Theme.of(context).colorScheme.onPrimary,
-            fontSize: 18,
+            fontSize: fontSize ?? 16,
           ),
         ),
       ],

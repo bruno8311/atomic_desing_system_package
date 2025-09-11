@@ -11,6 +11,7 @@ export 'display/atom_avatar.dart';
 export 'display/atom_label.dart';
 export 'display/atom_text.dart';
 export 'display/atom_card.dart';
+export 'display/atom_chip.dart';
 
 // Inputs
 export 'inputs/atom_input.dart';

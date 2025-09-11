@@ -7,6 +7,9 @@ class AtomIconButton extends StatelessWidget {
   final double? size;
   final EdgeInsetsGeometry? padding;
   final Color? iconColor;
+  final double spacing;
+  final BoxConstraints? constraints;
+  final VisualDensity? visualDensity;
 
   const AtomIconButton({
     super.key,
@@ -15,14 +18,25 @@ class AtomIconButton extends StatelessWidget {
     this.size,
     this.padding,
     this.iconColor,
+    this.spacing = 0,
+    this.constraints,
+    this.visualDensity,
   });
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(icon, size: size, color: iconColor ?? AppColors.text),
-      onPressed: onPressed,
-      padding: padding ?? const EdgeInsets.all(8),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IconButton(
+          icon: Icon(icon, size: size, color: iconColor ?? AppColors.text),
+          onPressed: onPressed,
+          padding: padding ?? EdgeInsets.zero,
+          constraints: constraints ?? const BoxConstraints(),
+          visualDensity: visualDensity ?? VisualDensity.compact,
+        ),
+        if (spacing > 0) SizedBox(width: spacing),
+      ],
     );
   }
 }

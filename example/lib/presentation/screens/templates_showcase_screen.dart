@@ -8,7 +8,7 @@ class TemplatesShowcaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Plantillas'),
@@ -19,7 +19,8 @@ class TemplatesShowcaseScreen extends StatelessWidget {
             tabs: [
               Tab(text: 'Login'),
               Tab(text: 'Dashboard'),
-              Tab(text: 'Detalle'),
+              Tab(text: 'Búsqueda'),
+              Tab(text: 'Detail'),
             ],
           ),
           backgroundColor: Colors.blue,
@@ -47,11 +48,22 @@ class TemplatesShowcaseScreen extends StatelessWidget {
                   SnackBar(content: Text('Se buscó el valor $text')),
                 );
               },
+              headerOnHome: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Home')),
+                );
+              },
               headerUserName: 'Bruno',
               headerUserImageUrl: 'https://scontent.fcix3-1.fna.fbcdn.net/v/t1.6435-9/199385759_345470910277839_3988273979229903886_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeH7nnrp8wBNTp6_IgBDlx4c_R1YrUnrs9b9HVitSeuz1qjz6pU0reOGKOt2lqfHuG3Z2vIJBoKwfwvTfoHsur02&_nc_ohc=SeLkX0AzpJ8Q7kNvwE5gnnO&_nc_oc=AdnaTHWop5iCzio4Pc5MmGZ0Hc9LMDWp3Ius52QP2VY8dxI0FxwgNmZKgn-ZHiEsdJQ&_nc_zt=23&_nc_ht=scontent.fcix3-1.fna&_nc_gid=_l-2szaZj-DvM7Mp2tQEgA&oh=00_AfaUKaW7SAHaATjQoGViPoXSmKJAwaJYcVpNrhHSp-jVlA&oe=68E587CF',
-              headerPaddingHorizontal: 24,
-              headerPaddingVertical: 20,
               headerHintText: 'Buscar',
+              headerTitle: 'Dashboard',
+              headerOnLogout: () => {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Logout')),
+                )
+              },
+              headerUserNameFontSize: 14,
+              headerAvatarRadius: 20,
               bodyCardHeaderTitle: 'Favoritos',
               bodyCardIcons: const [
                 Icons.star,
@@ -129,34 +141,20 @@ class TemplatesShowcaseScreen extends StatelessWidget {
                 },
               ],
               footerBackgroundColor: Color(0xFFEEEEEE),
-              footerPaddingHorizontal: 20,
-              footerPaddingVertical: 16,
             ),
             SearchResultsPage(
-              // Header
               headerUserName: 'Bruno',
               headerUserImageUrl: 'https://scontent.fcix3-1.fna.fbcdn.net/v/t1.6435-9/199385759_345470910277839_3988273979229903886_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeH7nnrp8wBNTp6_IgBDlx4c_R1YrUnrs9b9HVitSeuz1qjz6pU0reOGKOt2lqfHuG3Z2vIJBoKwfwvTfoHsur02&_nc_ohc=SeLkX0AzpJ8Q7kNvwE5gnnO&_nc_oc=AdnaTHWop5iCzio4Pc5MmGZ0Hc9LMDWp3Ius52QP2VY8dxI0FxwgNmZKgn-ZHiEsdJQ&_nc_zt=23&_nc_ht=scontent.fcix3-1.fna&_nc_gid=_l-2szaZj-DvM7Mp2tQEgA&oh=00_AfaUKaW7SAHaATjQoGViPoXSmKJAwaJYcVpNrhHSp-jVlA&oe=68E587CF',
-              headerLabelButtons: const ['Inicio', 'Perfil', 'Configuración'],
-              headerActionsButtons: [
-                () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Inicio')),
-                  );
-                },
-                () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Perfil')),
-                  );
-                },
-                () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Configuración')),
-                  );
-                },
-              ],
-              headerPaddingHorizontal: 20,
-              headerPaddingVertical: 16,
-              // Body
+              headerOnHome: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Home')),
+                );
+              },
+              headerOnLogout: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Logout')),
+                );
+              },
               bodyCardImageUrls: [
                 'https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
                 'https://images.unsplash.com/photo-1682685797229-b2930538da47?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -177,7 +175,6 @@ class TemplatesShowcaseScreen extends StatelessWidget {
                   );
                 },
               ],
-              // Footer
               footerIcons: const [
                 Icons.facebook,
                 Icons.email,
@@ -196,8 +193,52 @@ class TemplatesShowcaseScreen extends StatelessWidget {
                 },
               ],
               footerBackgroundColor: Color(0xFFEEEEEE),
-              footerPaddingHorizontal: 20,
-              footerPaddingVertical: 16,
+              headerTitle: 'Busqueda',
+            ),
+            TemplateDetailPage(
+              headerImageUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
+              headerUserName: 'Bruno',
+              headerTitle: 'White Gold Plated Princess',
+              headerShowBackArrow: true,
+              headerOnLogout: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Logout')),
+                );
+              },
+              headerOnHome: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Home')),
+                );
+              },
+              productImageUrl: 'https://images.unsplash.com/photo-1682685797229-b2930538da47?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+              productTitle: 'White Gold Plated Princess',
+              productPrice: 'S/ 9.99',
+              productCategory: 'jewelery',
+              productDescription: 'Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine\'s Day...',
+              buttonLabel: 'Agregar al carrito',
+              onButtonPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Agregado al carrito')),
+                );
+              },
+              footerIcons: const [
+                Icons.facebook,
+                Icons.email,
+              ],
+              footerLabels: const ['Términos', 'Privacidad'],
+              footerActions: [
+                () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Términos')),
+                  );
+                },
+                () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Privacidad')),
+                  );
+                },
+              ],
+              footerBackgroundColor: Color(0xFFEEEEEE),
             ),
           ],
         ),

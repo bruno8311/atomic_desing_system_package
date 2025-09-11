@@ -7,10 +7,21 @@ class PageDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TemplateDashboardPage(
-      headerUserName: 'Bruno Salazar',
+      headerUserName: 'Bruno',
       headerUserImageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop',
       headerShowBackArrow: true,
+      headerOnHome: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Home')),
+        );
+      },
       bodyCardHeaderTitle: 'Favoritos',
+      headerOnLogout: () {
+         ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Logout')),
+      );
+      },
+      headerTitle: 'Inicio',
       bodyCardIcons: const [
         Icons.star,
         Icons.star,

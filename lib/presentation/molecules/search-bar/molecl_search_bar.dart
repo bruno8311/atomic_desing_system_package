@@ -27,6 +27,7 @@ class MoleculeSearchBar extends StatelessWidget {
           const SizedBox(height: 8),
         ],
         Container(
+          constraints: const BoxConstraints(maxHeight: 36),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),

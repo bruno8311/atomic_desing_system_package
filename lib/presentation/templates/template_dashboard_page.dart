@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import '../organisms/organism.dart';
 
@@ -6,6 +8,9 @@ import 'package:atomic_desing_system_package/core/constants/app_colors.dart';
 typedef HeaderOnSearchCallback = void Function(String value);
 
 class TemplateDashboardPage extends StatefulWidget {
+  // Personalización visual del header
+  final double headerUserNameFontSize;
+  final double headerAvatarRadius;
 
   // Header
   final String headerUserName;
@@ -13,8 +18,11 @@ class TemplateDashboardPage extends StatefulWidget {
   final double headerPaddingHorizontal;
   final double headerPaddingVertical;
   final String headerHintText;
+  final String headerTitle;
   final bool headerShowBackArrow;
   final HeaderOnSearchCallback? headerOnSearch;
+  final VoidCallback headerOnLogout;
+  final VoidCallback headerOnHome;
 
   // Body (Carousels)
   final List<String> bodyCarouselsTitles;
@@ -41,11 +49,16 @@ class TemplateDashboardPage extends StatefulWidget {
     // Header
     required this.headerUserName,
     required this.headerUserImageUrl,
-    this.headerPaddingHorizontal = 24,
-    this.headerPaddingVertical = 20,
+    required this.headerOnLogout,
+    required this.headerOnHome,
+    this.headerPaddingHorizontal = 12,
+    this.headerPaddingVertical = 12,
     this.headerHintText = 'Buscar',
+    required this.headerTitle,
     this.headerShowBackArrow = false,
     this.headerOnSearch,
+    this.headerUserNameFontSize = 14,
+    this.headerAvatarRadius = 20,
 
     // Body
     this.bodyCardHeaderTitle,
@@ -92,6 +105,7 @@ class _TemplateDashboardPageState extends State<TemplateDashboardPage> {
       body: Column(
         children: [
           OrganismHeader(
+            title: widget.headerTitle,
             imageUrl: widget.headerUserImageUrl,
             userName: widget.headerUserName,
             paddingHorizontal: widget.headerPaddingHorizontal,
@@ -100,6 +114,10 @@ class _TemplateDashboardPageState extends State<TemplateDashboardPage> {
             hintText: widget.headerHintText,
             showBackArrow: widget.headerShowBackArrow,
             onSearch: widget.headerOnSearch,
+            userNameFontSize: widget.headerUserNameFontSize,
+            avatarRadius: widget.headerAvatarRadius,
+            onLogout: widget.headerOnLogout,
+            onHome: widget.headerOnHome,
           ),
           Expanded(
             child: ListView(

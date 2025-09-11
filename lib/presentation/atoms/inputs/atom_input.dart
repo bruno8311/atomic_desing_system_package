@@ -10,6 +10,7 @@ class AtomInput extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final ValueChanged<String>? onChanged;
+  final TextAlignVertical? textAlignVertical;
 
   const AtomInput({
     super.key,
@@ -21,6 +22,7 @@ class AtomInput extends StatelessWidget {
     this.suffixIcon,
     this.keyboardType,
     this.onChanged,
+    this.textAlignVertical,
   });
 
   @override
@@ -36,6 +38,7 @@ class AtomInput extends StatelessWidget {
       enabled: enabled,
       keyboardType: keyboardType,
       onChanged: onChanged,
+      textAlignVertical: textAlignVertical,
     );
   }
 }

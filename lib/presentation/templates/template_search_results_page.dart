@@ -6,10 +6,12 @@ class SearchResultsPage extends StatefulWidget {
   final String headerUserName;
   final String headerUserImageUrl;
   final List<String> headerLabelButtons;
-  final List<VoidCallback> headerActionsButtons;
   final double headerPaddingHorizontal;
   final double headerPaddingVertical;
   final String headerHintText;
+  final String headerTitle;
+  final VoidCallback headerOnLogout;
+  final VoidCallback headerOnHome;
 
   // Body (Cards)
   final List<String> bodyCardImageUrls;
@@ -30,11 +32,14 @@ class SearchResultsPage extends StatefulWidget {
     // Header
     required this.headerUserName,
     required this.headerUserImageUrl,
+    required this.headerOnLogout,
+    required this.headerTitle,
+    required this.headerOnHome,
     this.headerLabelButtons = const ['Inicio', 'Perfil', 'Configuración'],
-    this.headerActionsButtons = const [],
-    this.headerPaddingHorizontal = 20,
-    this.headerPaddingVertical = 16,
+    this.headerPaddingHorizontal = 12,
+    this.headerPaddingVertical = 12,
     this.headerHintText = 'Buscar',
+
     // Body
     required this.bodyCardImageUrls,
     required this.bodyCardDescriptions,
@@ -78,12 +83,15 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
       body: Column(
         children: [
           OrganismHeader(
+            title: widget.headerTitle,
             imageUrl: widget.headerUserImageUrl,
             userName: widget.headerUserName,
             paddingHorizontal: widget.headerPaddingHorizontal,
             paddingVertical: widget.headerPaddingVertical,
             searchController: _searchController,
-            hintText: widget.headerHintText
+            hintText: widget.headerHintText,
+            onLogout: widget.headerOnLogout,
+            onHome: widget.headerOnHome,
           ),
           Expanded(
             child: ListView(
