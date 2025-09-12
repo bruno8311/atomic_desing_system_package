@@ -45,19 +45,23 @@ class OrganismFooter extends StatelessWidget {
           if (icons != null && icons!.isNotEmpty)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: icons!.map((icon) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Icon(icon, color: AppColors.primary),
-              )).toList(),
+              children: icons!
+                  .map(
+                    (icon) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Icon(icon, color: AppColors.primary),
+                    ),
+                  )
+                  .toList(),
             ),
-            const SizedBox(height: 12),
-            MoleculeActionButtons(
-              labels: labels,
-              actions: actions,
-              direction: Axis.horizontal,
-              spacing: 8,
-              alignment: MainAxisAlignment.center,
-            ),
+          const SizedBox(height: 12),
+          MoleculeActionButtons(
+            labels: labels,
+            actions: actions,
+            direction: Axis.horizontal,
+            spacing: 8,
+            alignment: MainAxisAlignment.center,
+          ),
           if (copyright != null) ...[
             const SizedBox(height: 12),
             AtomText(

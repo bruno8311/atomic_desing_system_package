@@ -53,7 +53,11 @@ class _MoleculeDateFieldState extends State<MoleculeDateField> {
             }
           },
           child: AtomInput(
-            controller: TextEditingController(text: selectedDate != null ? "${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}" : ''),
+            controller: TextEditingController(
+              text: selectedDate != null
+                  ? "${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}"
+                  : '',
+            ),
             enabled: false,
             hintText: 'Selecciona una fecha',
             suffixIcon: const Icon(Icons.calendar_today),
@@ -64,7 +68,9 @@ class _MoleculeDateFieldState extends State<MoleculeDateField> {
             padding: const EdgeInsets.only(top: 4),
             child: AtomText(
               text: widget.helperText!,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: Colors.grey),
             ),
           ),
       ],

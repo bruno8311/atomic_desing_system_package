@@ -30,11 +30,18 @@ class TemplateLoginPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (title != null)
-                      Text(title!, style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold)),
+                      Text(
+                        title!,
+                        style: Theme.of(context).textTheme.headlineMedium
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                      ),
                     if (subtitle != null)
                       Padding(
                         padding: const EdgeInsets.only(top: 8, bottom: 24),
-                        child: Text(subtitle!, style: Theme.of(context).textTheme.bodyLarge),
+                        child: Text(
+                          subtitle!,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
                       ),
                     OrganismLoginForm(
                       onLogin: onLogin,

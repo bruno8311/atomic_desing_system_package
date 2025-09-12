@@ -2,7 +2,6 @@ import '../../atoms/atoms.dart';
 import '../../molecules/molecules.dart';
 import 'package:flutter/material.dart';
 
-
 class OrganismCarousel extends StatelessWidget {
   final String title;
   final List<String> imageUrls;
@@ -19,7 +18,11 @@ class OrganismCarousel extends StatelessWidget {
     required this.onSeeMoreCallbacks,
     this.height = 300,
     this.padding,
-  }) : assert(imageUrls.length == descriptions.length && descriptions.length == onSeeMoreCallbacks.length, 'Todas las listas deben tener el mismo tamaño');
+  }) : assert(
+         imageUrls.length == descriptions.length &&
+             descriptions.length == onSeeMoreCallbacks.length,
+         'Todas las listas deben tener el mismo tamaño',
+       );
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,9 @@ class OrganismCarousel extends StatelessWidget {
       children: [
         AtomText(
           text: title,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(
+            context,
+          ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         SizedBox(
@@ -49,7 +54,9 @@ class OrganismCarousel extends StatelessWidget {
                   onSeeMore: onSeeMoreCallbacks[index],
                   imageHeight: imageHeight,
                   buttonTextStyle: TextStyle(fontSize: buttonFontSize),
-                  descriptionTextStyle: TextStyle(fontSize: descriptionFontSize),
+                  descriptionTextStyle: TextStyle(
+                    fontSize: descriptionFontSize,
+                  ),
                   maxLinesDescription: 2,
                 ),
               );

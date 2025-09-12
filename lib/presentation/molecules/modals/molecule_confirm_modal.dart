@@ -82,18 +82,11 @@ class MoleculeConfirmModal extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
-            AtomText(
-              text: message,
-              textAlign: TextAlign.center,
-            ),
+            AtomText(text: message, textAlign: TextAlign.center),
             const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                cancelBtn,
-                const SizedBox(width: 12),
-                confirmBtn,
-              ],
+              children: [cancelBtn, const SizedBox(width: 12), confirmBtn],
             ),
           ],
         ),

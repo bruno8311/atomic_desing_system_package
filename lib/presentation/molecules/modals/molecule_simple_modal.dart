@@ -50,10 +50,7 @@ class MoleculeSimpleModal extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
-            AtomText(
-              text: content,
-              textAlign: TextAlign.center,
-            ),
+            AtomText(text: content, textAlign: TextAlign.center),
             const SizedBox(height: 24),
             AtomButton(
               label: buttonText,

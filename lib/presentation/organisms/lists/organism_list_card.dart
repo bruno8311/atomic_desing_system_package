@@ -17,7 +17,11 @@ class OrganismListCard extends StatelessWidget {
     this.padding,
     this.shrinkWrap = true,
     this.physics = const NeverScrollableScrollPhysics(),
-  }) : assert(imageUrls.length == descriptions.length && descriptions.length == onSeeMoreCallbacks.length, 'Todas las listas deben tener el mismo tamaño');
+  }) : assert(
+         imageUrls.length == descriptions.length &&
+             descriptions.length == onSeeMoreCallbacks.length,
+         'Todas las listas deben tener el mismo tamaño',
+       );
 
   @override
   Widget build(BuildContext context) {

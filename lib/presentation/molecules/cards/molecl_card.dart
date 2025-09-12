@@ -27,42 +27,43 @@ class MoleculeCard extends StatelessWidget {
     this.maxLinesDescription,
   });
 
-@override
-Widget build(BuildContext context) {
-  return AtomCard(
-    child: Padding(
-      padding: padding ?? const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AtomImg(
-            imageUrl: imageUrl,
-            height: imageHeight,
-            width: double.infinity,
-            fit: BoxFit.cover,
-            borderRadius: BorderRadius.circular(imageRadius),
-          ),
-          const SizedBox(height: 12),
-          AtomText(
-            text: description,
-            style: descriptionTextStyle ?? Theme.of(context).textTheme.bodyLarge,
-            maxLines: maxLinesDescription,
-          ),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AtomButton(
-                label: 'Ver más',
-                onPressed: onSeeMore,
-                textStyle: buttonTextStyle,
-                padding: buttonPadding,
-              ),
-            ],
-          ),
-        ],
+  @override
+  Widget build(BuildContext context) {
+    return AtomCard(
+      child: Padding(
+        padding: padding ?? const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AtomImg(
+              imageUrl: imageUrl,
+              height: imageHeight,
+              width: double.infinity,
+              fit: BoxFit.cover,
+              borderRadius: BorderRadius.circular(imageRadius),
+            ),
+            const SizedBox(height: 12),
+            AtomText(
+              text: description,
+              style:
+                  descriptionTextStyle ?? Theme.of(context).textTheme.bodyLarge,
+              maxLines: maxLinesDescription,
+            ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AtomButton(
+                  label: 'Ver más',
+                  onPressed: onSeeMore,
+                  textStyle: buttonTextStyle,
+                  padding: buttonPadding,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 }

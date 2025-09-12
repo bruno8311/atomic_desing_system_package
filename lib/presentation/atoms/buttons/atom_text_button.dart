@@ -20,7 +20,8 @@ class AtomTextButton extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        padding: padding ?? const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        padding:
+            padding ?? const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       ),
       child: Text(label, style: textStyle ?? AppTextStyles.button),
     );

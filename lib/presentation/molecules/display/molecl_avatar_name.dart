@@ -20,10 +20,7 @@ class MoleculeAvatarWithName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        AtomAvatar(
-          imageUrl: imageUrl,
-          radius: avatarRadius ?? 24,
-        ),
+        AtomAvatar(imageUrl: imageUrl, radius: avatarRadius ?? 24),
         const SizedBox(width: 8),
         AtomLabel(
           text: name,

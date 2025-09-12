@@ -11,14 +11,14 @@ class PageLogin extends StatelessWidget {
       subtitle: 'Inicia sesión para continuar',
       showBackArrow: true,
       onLogin: (email, password) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login: $email / $password')),
-      );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Login: $email / $password')));
       },
       onForgotPassword: () {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Olvidaste tu contraseña')),
-      );
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Olvidaste tu contraseña')),
+        );
       },
     );
   }

@@ -1,6 +1,6 @@
 export 'forms/organism_login_form.dart';
-export 'headers/organism_header.dart';
-export 'headers/organism_header2.dart';
+export 'headers/organism_header_searchbox.dart';
+export 'headers/organism_header_icon.dart';
 export 'headers/organism_header3.dart';
 export 'carrousel/organism_carrousel.dart';
 export 'footer/organism_footer.dart';

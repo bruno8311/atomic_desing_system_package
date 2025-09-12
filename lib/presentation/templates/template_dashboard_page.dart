@@ -1,17 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import '../organisms/organism.dart';
-
 import 'package:atomic_desing_system_package/core/constants/app_colors.dart';
-
-typedef HeaderOnSearchCallback = void Function(String value);
+import 'template_base_page.dart';
 
 class TemplateDashboardPage extends StatefulWidget {
-  // Personalización visual del header
-  final double headerUserNameFontSize;
-  final double headerAvatarRadius;
-
   // Header
   final String headerUserName;
   final String headerUserImageUrl;
@@ -20,9 +12,11 @@ class TemplateDashboardPage extends StatefulWidget {
   final String headerHintText;
   final String headerTitle;
   final bool headerShowBackArrow;
-  final HeaderOnSearchCallback? headerOnSearch;
+  final ValueChanged<String>? headerOnSearch;
   final VoidCallback headerOnLogout;
   final VoidCallback headerOnHome;
+  final double headerUserNameFontSize;
+  final double headerAvatarRadius;
 
   // Body (Carousels)
   final List<String> bodyCarouselsTitles;
@@ -70,6 +64,7 @@ class TemplateDashboardPage extends StatefulWidget {
     required this.bodyCarouselsImageUrls,
     required this.bodyCarouselsDescriptions,
     required this.bodyCarouselsOnSeeMore,
+
     // Footer
     this.footerCopyright = '© 2025 Mi Tienda. Todos los derechos reservados.',
     required this.footerIcons,
@@ -78,7 +73,19 @@ class TemplateDashboardPage extends StatefulWidget {
     this.footerBackgroundColor = AppColors.background,
     this.footerPaddingHorizontal = 20,
     this.footerPaddingVertical = 16,
-  });
+  }) : assert(
+         bodyCardIcons.length == bodyCardTitles.length &&
+             bodyCardTitles.length == bodyCardSubtitles.length &&
+             bodyCardSubtitles.length == bodyCardOnTaps.length,
+         'Las listas de íconos, títulos, subtítulos y onTaps de las cards deben tener el mismo tamaño.',
+       ),
+       assert(
+         bodyCarouselsTitles.length == bodyCarouselsImageUrls.length &&
+             bodyCarouselsImageUrls.length ==
+                 bodyCarouselsDescriptions.length &&
+             bodyCarouselsDescriptions.length == bodyCarouselsOnSeeMore.length,
+         'Las listas de carouseles (títulos, imágenes, descripciones y onSeeMore) deben tener el mismo tamaño.',
+       );
 
   @override
   State<TemplateDashboardPage> createState() => _TemplateDashboardPageState();
@@ -101,64 +108,60 @@ class _TemplateDashboardPageState extends State<TemplateDashboardPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          OrganismHeader(
-            title: widget.headerTitle,
-            imageUrl: widget.headerUserImageUrl,
-            userName: widget.headerUserName,
-            paddingHorizontal: widget.headerPaddingHorizontal,
-            paddingVertical: widget.headerPaddingVertical,
-            searchController: _searchController,
-            hintText: widget.headerHintText,
-            showBackArrow: widget.headerShowBackArrow,
-            onSearch: widget.headerOnSearch,
-            userNameFontSize: widget.headerUserNameFontSize,
-            avatarRadius: widget.headerAvatarRadius,
-            onLogout: widget.headerOnLogout,
-            onHome: widget.headerOnHome,
+    final header = OrganismHeaderSearchBox(
+      title: widget.headerTitle,
+      imageUrl: widget.headerUserImageUrl,
+      userName: widget.headerUserName,
+      paddingHorizontal: widget.headerPaddingHorizontal,
+      paddingVertical: widget.headerPaddingVertical,
+      searchController: _searchController,
+      hintText: widget.headerHintText,
+      showBackArrow: widget.headerShowBackArrow,
+      onSearch: widget.headerOnSearch,
+      userNameFontSize: widget.headerUserNameFontSize,
+      avatarRadius: widget.headerAvatarRadius,
+      onLogout: widget.headerOnLogout,
+      onHome: widget.headerOnHome,
+    );
+
+    final footer = OrganismFooter(
+      copyright: widget.footerCopyright,
+      icons: widget.footerIcons,
+      labels: widget.footerLabels,
+      actions: widget.footerActions,
+      backgroundColor: widget.footerBackgroundColor,
+      paddingHorizontal: widget.footerPaddingHorizontal,
+      paddingVertical: widget.footerPaddingVertical,
+    );
+
+    final body = ListView(
+      padding: const EdgeInsets.all(0),
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: OrganismListIconCard(
+            headerTitle: widget.bodyCardHeaderTitle,
+            icons: widget.bodyCardIcons,
+            titles: widget.bodyCardTitles,
+            subtitles: widget.bodyCardSubtitles,
+            onTaps: widget.bodyCardOnTaps,
           ),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(0),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: OrganismListIconCard(
-                    headerTitle: widget.bodyCardHeaderTitle,
-                    icons: widget.bodyCardIcons,
-                    titles: widget.bodyCardTitles,
-                    subtitles: widget.bodyCardSubtitles,
-                    onTaps: widget.bodyCardOnTaps,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                for (int i = 0; i < widget.bodyCarouselsTitles.length; i++)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: OrganismCarousel(
-                      title: widget.bodyCarouselsTitles[i],
-                      imageUrls: widget.bodyCarouselsImageUrls[i],
-                      descriptions: widget.bodyCarouselsDescriptions[i],
-                      onSeeMoreCallbacks: widget.bodyCarouselsOnSeeMore[i],
-                    ),
-                  ),
-                const SizedBox(height: 24),
-              ],
+        ),
+        const SizedBox(height: 12),
+        for (int i = 0; i < widget.bodyCarouselsTitles.length; i++)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: OrganismCarousel(
+              title: widget.bodyCarouselsTitles[i],
+              imageUrls: widget.bodyCarouselsImageUrls[i],
+              descriptions: widget.bodyCarouselsDescriptions[i],
+              onSeeMoreCallbacks: widget.bodyCarouselsOnSeeMore[i],
             ),
           ),
-          OrganismFooter(
-            copyright: widget.footerCopyright,
-            icons: widget.footerIcons,
-            labels: widget.footerLabels,
-            actions: widget.footerActions,
-            backgroundColor: widget.footerBackgroundColor,
-            paddingHorizontal: widget.footerPaddingHorizontal,
-            paddingVertical: widget.footerPaddingVertical,
-          ),
-        ],
-      ),
+        const SizedBox(height: 24),
+      ],
     );
+
+    return TemplateBasePage(header: header, footer: footer, body: body);
   }
 }

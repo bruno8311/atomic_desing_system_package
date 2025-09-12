@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:atomic_desing_system_package/atomic_desing_system_package.dart';
 
-
 class PagesShowcaseScreen extends StatelessWidget {
   const PagesShowcaseScreen({super.key});
 
@@ -39,6 +38,36 @@ class PagesShowcaseScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const PageDashboard()), //Navega a pagina de Dashboard
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.dashboard),
+            title: const Text('Detalle'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const PageDetail()), //Navega a pagina de Detalle
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.dashboard),
+            title: const Text('Contacto'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const PageContact()), //Navega a pagina de Contacto
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.dashboard),
+            title: const Text('Listar Elementos'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const PageListCartsTemplate()), //Navega a pagina de Listar Elementos
               );
             },
           ),

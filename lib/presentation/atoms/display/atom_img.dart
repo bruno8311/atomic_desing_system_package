@@ -26,10 +26,7 @@ class AtomImg extends StatelessWidget {
     );
 
     if (borderRadius != null) {
-      return ClipRRect(
-        borderRadius: borderRadius!,
-        child: img,
-      );
+      return ClipRRect(borderRadius: borderRadius!, child: img);
     }
     return img;
   }

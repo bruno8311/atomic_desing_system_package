@@ -33,7 +33,9 @@ class MoleculePhoneField extends StatelessWidget {
             padding: const EdgeInsets.only(top: 4),
             child: AtomText(
               text: helperText!,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: Colors.grey),
             ),
           ),
       ],

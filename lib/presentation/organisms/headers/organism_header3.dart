@@ -3,7 +3,7 @@ import 'package:atomic_desing_system_package/presentation/molecules/molecules.da
 import 'package:atomic_desing_system_package/presentation/atoms/atoms.dart';
 import 'package:atomic_desing_system_package/core/constants/app_colors.dart';
 
-class OrganismHeader3 extends StatelessWidget {
+class OrganismHeaderWithoutSearch extends StatelessWidget {
   final double? userNameFontSize;
   final double? avatarRadius;
   final String imageUrl;
@@ -20,7 +20,7 @@ class OrganismHeader3 extends StatelessWidget {
   final VoidCallback onLogout;
   final VoidCallback? onHome;
 
-  const OrganismHeader3({
+  const OrganismHeaderWithoutSearch({
     super.key,
     required this.imageUrl,
     required this.userName,
@@ -76,7 +76,9 @@ class OrganismHeader3 extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 0),
                     ),
                   Padding(
-                    padding: showBackArrow ? EdgeInsets.only(left: 0) : EdgeInsets.only(left: 20),
+                    padding: showBackArrow
+                        ? EdgeInsets.only(left: 0)
+                        : EdgeInsets.only(left: 20),
                     child: MoleculeAvatarWithName(
                       imageUrl: imageUrl,
                       name: userName,
@@ -109,7 +111,7 @@ class OrganismHeader3 extends StatelessWidget {
                     iconColor: Colors.white,
                     size: 18,
                     padding: EdgeInsets.zero,
-                    onPressed: onHome
+                    onPressed: onHome,
                   ),
                   AtomIconButton(
                     icon: Icons.logout,
@@ -120,7 +122,8 @@ class OrganismHeader3 extends StatelessWidget {
                       MoleculeConfirmModal.show(
                         context: context,
                         title: '¿Desea cerrar sesión?',
-                        message: 'Confirme si desea cerrar sesión en la aplicación.',
+                        message:
+                            'Confirme si desea cerrar sesión en la aplicación.',
                         confirmText: 'Confirmar',
                         cancelText: 'Cancelar',
                         onConfirm: () {

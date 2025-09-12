@@ -7,41 +7,29 @@ class PageDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TemplateDashboardPage(
+      headerTitle: 'Inicio',
       headerUserName: 'Bruno',
-      headerUserImageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop',
+      headerUserImageUrl:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop',
       headerShowBackArrow: true,
       headerOnHome: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Home')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Home')));
       },
       bodyCardHeaderTitle: 'Favoritos',
       headerOnLogout: () {
-         ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Logout')),
-      );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Logout')));
       },
-      headerTitle: 'Inicio',
-      bodyCardIcons: const [
-        Icons.star,
-        Icons.star,
-      ],
-      bodyCardTitles: const [
-        'Favoritos 1',
-        'Favoritos 2',
-      ],
+      bodyCardIcons: const [Icons.star, Icons.star],
+      bodyCardTitles: const ['Favoritos 1', 'Favoritos 2'],
       bodyCardSubtitles: const [
         'Tus elementos favoritos 1',
         'Tus elementos favoritos 2',
       ],
-      bodyCardOnTaps: [
-        () {},
-        () {},
-      ],
-      bodyCarouselsTitles: const [
-        'Promociones',
-        'Novedades',
-      ],
+      bodyCardOnTaps: [() {}, () {}],
+      bodyCarouselsTitles: const ['Promociones', 'Novedades'],
       bodyCarouselsImageUrls: const [
         [
           'https://images.unsplash.com/photo-1454372182658-c712e4c5a1db?q=80&w=1170&auto=format&fit=crop',
@@ -53,28 +41,16 @@ class PageDashboard extends StatelessWidget {
         ],
       ],
       bodyCarouselsDescriptions: const [
-        [
-          'Promo especial 1',
-          'Promo especial 2',
-        ],
-        [
-          'Novedad 1',
-          'Novedad 2',
-        ],
+        ['Promo especial 1', 'Promo especial 2'],
+        ['Novedad 1', 'Novedad 2'],
       ],
       bodyCarouselsOnSeeMore: [
         [() {}, () {}],
         [() {}, () {}],
       ],
-      footerIcons: const [
-        Icons.facebook,
-        Icons.email,
-      ],
+      footerIcons: const [Icons.facebook, Icons.email],
       footerLabels: const ['Contacto', 'Ayuda'],
-      footerActions: [
-        () {},
-        () {},
-      ],
+      footerActions: [() {}, () {}],
     );
   }
 }

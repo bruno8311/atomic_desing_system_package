@@ -3,7 +3,7 @@ import 'package:atomic_desing_system_package/presentation/molecules/molecules.da
 import 'package:atomic_desing_system_package/presentation/atoms/atoms.dart';
 import 'package:atomic_desing_system_package/core/constants/app_colors.dart';
 
-class OrganismHeader extends StatelessWidget {
+class OrganismHeaderSearchBox extends StatelessWidget {
   final double? userNameFontSize;
   final double? avatarRadius;
   final String imageUrl;
@@ -25,7 +25,7 @@ class OrganismHeader extends StatelessWidget {
   final VoidCallback onLogout;
   final VoidCallback onHome;
 
-  const OrganismHeader({
+  const OrganismHeaderSearchBox({
     super.key,
     required this.imageUrl,
     required this.userName,
@@ -85,7 +85,9 @@ class OrganismHeader extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 0),
                     ),
                   Padding(
-                    padding: showBackArrow ? EdgeInsets.only(left: 0) : EdgeInsets.only(left: 20),
+                    padding: showBackArrow
+                        ? EdgeInsets.only(left: 0)
+                        : EdgeInsets.only(left: 20),
                     child: MoleculeAvatarWithName(
                       imageUrl: imageUrl,
                       name: userName,
@@ -147,7 +149,8 @@ class OrganismHeader extends StatelessWidget {
                       MoleculeConfirmModal.show(
                         context: context,
                         title: '¿Desea cerrar sesión?',
-                        message: 'Confirme si desea cerrar sesión en la aplicación.',
+                        message:
+                            'Confirme si desea cerrar sesión en la aplicación.',
                         confirmText: 'Confirmar',
                         cancelText: 'Cancelar',
                         onConfirm: () {
@@ -163,16 +166,16 @@ class OrganismHeader extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-            Padding(
-              padding: EdgeInsets.only(left: paddingHorizontal),
-              child: MoleculeSearchBar(
-                label: searchLabel,
-                controller: searchController!,
-                icon: searchIcon ?? Icons.search,
-                onSearch: onSearch,
-                hintText: hintText,
-              ),
+          Padding(
+            padding: EdgeInsets.only(left: paddingHorizontal),
+            child: MoleculeSearchBar(
+              label: searchLabel,
+              controller: searchController!,
+              icon: searchIcon ?? Icons.search,
+              onSearch: onSearch,
+              hintText: hintText,
             ),
+          ),
         ],
       ),
     );

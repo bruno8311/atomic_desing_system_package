@@ -32,8 +32,13 @@ class MoleculeDropdownField<T> extends StatelessWidget {
           onChanged: onChanged,
           decoration: InputDecoration(
             hintText: hint,
-            border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 14,
+            ),
           ),
         ),
         if (helperText != null)
@@ -41,7 +46,9 @@ class MoleculeDropdownField<T> extends StatelessWidget {
             padding: const EdgeInsets.only(top: 4),
             child: AtomText(
               text: helperText!,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: Colors.grey),
             ),
           ),
       ],

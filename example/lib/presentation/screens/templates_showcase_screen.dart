@@ -7,8 +7,14 @@ class TemplatesShowcaseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Strings Reutilizables
+    const userName = 'Bruno';
+    const userImageUrl = 'https://scontent.fcix3-1.fna.fbcdn.net/v/t1.6435-9/199385759_345470910277839_3988273979229903886_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeH7nnrp8wBNTp6_IgBDlx4c_R1YrUnrs9b9HVitSeuz1qjz6pU0reOGKOt2lqfHuG3Z2vIJBoKwfwvTfoHsur02&_nc_ohc=SeLkX0AzpJ8Q7kNvwE5gnnO&_nc_oc=AdnaTHWop5iCzio4Pc5MmGZ0Hc9LMDWp3Ius52QP2VY8dxI0FxwgNmZKgn-ZHiEsdJQ&_nc_zt=23&_nc_ht=scontent.fcix3-1.fna&_nc_gid=_l-2szaZj-DvM7Mp2tQEgA&oh=00_AfaUKaW7SAHaATjQoGViPoXSmKJAwaJYcVpNrhHSp-jVlA&oe=68E587CF';
+    const searchTitle = 'Busqueda';
+    const detailTitle = 'White Gold Plated Princess';
+    const detailImageUrl = 'https://images.unsplash.com/photo-1682685797229-b2930538da47?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Plantillas'),
@@ -19,15 +25,16 @@ class TemplatesShowcaseScreen extends StatelessWidget {
             tabs: [
               Tab(text: 'Login'),
               Tab(text: 'Dashboard'),
-              Tab(text: 'Búsqueda'),
-              Tab(text: 'Detail'),
+              Tab(text: 'Lista'),
+              Tab(text: 'Detalle'),
+              Tab(text: 'Detalle 2'),
             ],
           ),
           backgroundColor: Colors.blue,
-
         ),
         body: TabBarView(
           children: [
+            //Plantilla de Login
             TemplateLoginPage(
               title: 'Bienvenido',
               subtitle: 'Inicia sesión para continuar',
@@ -42,25 +49,26 @@ class TemplatesShowcaseScreen extends StatelessWidget {
                 );
               },
             ),
+            //Plantilla de Dashboard (Pantalla principal)
             TemplateDashboardPage(
+              headerUserName: userName,
+              headerUserImageUrl: userImageUrl,
+              headerHintText: 'Buscar',
+              headerTitle: 'Dashboard',
               headerOnSearch: (text) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Se buscó el valor $text')),
                 );
               },
-              headerOnHome: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Home')),
-                );
-              },
-              headerUserName: 'Bruno',
-              headerUserImageUrl: 'https://scontent.fcix3-1.fna.fbcdn.net/v/t1.6435-9/199385759_345470910277839_3988273979229903886_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeH7nnrp8wBNTp6_IgBDlx4c_R1YrUnrs9b9HVitSeuz1qjz6pU0reOGKOt2lqfHuG3Z2vIJBoKwfwvTfoHsur02&_nc_ohc=SeLkX0AzpJ8Q7kNvwE5gnnO&_nc_oc=AdnaTHWop5iCzio4Pc5MmGZ0Hc9LMDWp3Ius52QP2VY8dxI0FxwgNmZKgn-ZHiEsdJQ&_nc_zt=23&_nc_ht=scontent.fcix3-1.fna&_nc_gid=_l-2szaZj-DvM7Mp2tQEgA&oh=00_AfaUKaW7SAHaATjQoGViPoXSmKJAwaJYcVpNrhHSp-jVlA&oe=68E587CF',
-              headerHintText: 'Buscar',
-              headerTitle: 'Dashboard',
               headerOnLogout: () => {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Logout')),
                 )
+              },
+              headerOnHome: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Home')),
+                );
               },
               headerUserNameFontSize: 14,
               headerAvatarRadius: 20,
@@ -142,17 +150,24 @@ class TemplatesShowcaseScreen extends StatelessWidget {
               ],
               footerBackgroundColor: Color(0xFFEEEEEE),
             ),
-            SearchResultsPage(
-              headerUserName: 'Bruno',
-              headerUserImageUrl: 'https://scontent.fcix3-1.fna.fbcdn.net/v/t1.6435-9/199385759_345470910277839_3988273979229903886_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeH7nnrp8wBNTp6_IgBDlx4c_R1YrUnrs9b9HVitSeuz1qjz6pU0reOGKOt2lqfHuG3Z2vIJBoKwfwvTfoHsur02&_nc_ohc=SeLkX0AzpJ8Q7kNvwE5gnnO&_nc_oc=AdnaTHWop5iCzio4Pc5MmGZ0Hc9LMDWp3Ius52QP2VY8dxI0FxwgNmZKgn-ZHiEsdJQ&_nc_zt=23&_nc_ht=scontent.fcix3-1.fna&_nc_gid=_l-2szaZj-DvM7Mp2tQEgA&oh=00_AfaUKaW7SAHaATjQoGViPoXSmKJAwaJYcVpNrhHSp-jVlA&oe=68E587CF',
+            //Plantilla de Búsqueda
+            TemplateListCarts(
+              headerUserName: userName,
+              headerUserImageUrl: userImageUrl,
+              headerTitle: searchTitle,
+              headerOnSearch: (text) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Se buscó el valor $text')),
+                );
+              },
+              headerOnLogout: () => {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Logout')),
+                )
+              },
               headerOnHome: () {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Home')),
-                );
-              },
-              headerOnLogout: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Logout')),
                 );
               },
               bodyCardImageUrls: [
@@ -193,12 +208,12 @@ class TemplatesShowcaseScreen extends StatelessWidget {
                 },
               ],
               footerBackgroundColor: Color(0xFFEEEEEE),
-              headerTitle: 'Busqueda',
             ),
+            //Plantilla de detalle
             TemplateDetailPage(
-              headerImageUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
-              headerUserName: 'Bruno',
-              headerTitle: 'White Gold Plated Princess',
+              headerUserImageUrl: userImageUrl,
+              headerUserName: userName,
+              headerTitle: detailTitle,
               headerShowBackArrow: true,
               headerOnLogout: () {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -210,15 +225,60 @@ class TemplatesShowcaseScreen extends StatelessWidget {
                   const SnackBar(content: Text('Home')),
                 );
               },
-              productImageUrl: 'https://images.unsplash.com/photo-1682685797229-b2930538da47?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-              productTitle: 'White Gold Plated Princess',
+              productImageUrl: detailImageUrl,
+              productTitle: detailTitle,
               productPrice: 'S/ 9.99',
               productCategory: 'jewelery',
               productDescription: 'Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine\'s Day...',
-              buttonLabel: 'Agregar al carrito',
+              buttonLabel: 'Añadir',
               onButtonPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Agregado al carrito')),
+                );
+              },
+              footerIcons: const [
+                Icons.facebook,
+                Icons.email,
+              ],
+              footerLabels: const ['Términos', 'Privacidad'],
+              footerActions: [
+                () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Términos')),
+                  );
+                },
+                () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Privacidad')),
+                  );
+                },
+              ],
+              footerBackgroundColor: Color(0xFFEEEEEE),
+            ),
+            //TemplateContactPage
+            TemplateContactPage(
+              headerUserImageUrl: userImageUrl,
+              headerUserName: userName,
+              headerTitle: detailTitle,
+              headerShowBackArrow: true,
+              headerOnLogout: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Logout')),
+                );
+              },
+              headerOnHome: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Home')),
+                );
+              },
+              descriptiveTitle: 'Titulo',
+              descriptiveSubtitle:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl nunc.',
+              descriptiveTextFieldHint: 'Escribe aquí...',
+              descriptiveButtonText: 'Enviar',
+              descriptiveButtonDependsOnText: true,
+              descriptiveOnButtonPressed: (text) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Texto enviado: $text')),
                 );
               },
               footerIcons: const [

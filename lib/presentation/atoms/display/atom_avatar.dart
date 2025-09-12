@@ -9,7 +9,7 @@ class AtomAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius,
-      backgroundImage: NetworkImage(imageUrl)
+      backgroundImage: NetworkImage(imageUrl),
     );
   }
 }

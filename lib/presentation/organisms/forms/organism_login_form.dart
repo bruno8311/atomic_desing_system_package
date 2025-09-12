@@ -6,11 +6,7 @@ class OrganismLoginForm extends StatefulWidget {
   final void Function(String email, String password)? onLogin;
   final void Function()? onForgotPassword;
 
-  const OrganismLoginForm({
-    super.key,
-    this.onLogin,
-    this.onForgotPassword,
-  });
+  const OrganismLoginForm({super.key, this.onLogin, this.onForgotPassword});
 
   @override
   State<OrganismLoginForm> createState() => _OrganismLoginFormState();

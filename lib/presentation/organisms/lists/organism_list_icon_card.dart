@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:atomic_desing_system_package/core/constants/app_text_styles.dart';
 import '../../molecules/molecules.dart';
 
-
 class OrganismListIconCard extends StatelessWidget {
   final String? headerTitle;
   final List<IconData> icons;
@@ -28,10 +27,7 @@ class OrganismListIconCard extends StatelessWidget {
         if (headerTitle != null) ...[
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text(
-              headerTitle!,
-              style: AppTextStyles.title,
-            ),
+            child: Text(headerTitle!, style: AppTextStyles.title),
           ),
         ],
         ListView.separated(

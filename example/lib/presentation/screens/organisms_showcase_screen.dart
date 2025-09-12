@@ -18,7 +18,7 @@ class OrganismsShowcaseScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         children: [
           const Text('Header con buscador:', style: TextStyle(fontWeight: FontWeight.bold)),
-          OrganismHeader(
+          OrganismHeaderSearchBox(
             title: 'Valor',
             onSearch: (text) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -45,7 +45,7 @@ class OrganismsShowcaseScreen extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           const Text('Header base', style: TextStyle(fontWeight: FontWeight.bold)),
-          OrganismHeader3(
+          OrganismHeaderWithoutSearch(
             imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             userName: 'Bruno',
             title: 'Home',
@@ -63,7 +63,7 @@ class OrganismsShowcaseScreen extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           const Text('Header con icono:', style: TextStyle(fontWeight: FontWeight.bold)),
-          OrganismHeader2(
+          OrganismHeaderIcon(
             imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             userName: 'Bruno',
             icon: Icons.more_vert,

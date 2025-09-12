@@ -57,10 +57,7 @@ class MoleculeIconCard extends StatelessWidget {
                 ),
               ),
               if (onTap != null)
-                AtomIcon(
-                  icon: Icons.chevron_right,
-                  color: Colors.grey,
-                ),
+                AtomIcon(icon: Icons.chevron_right, color: Colors.grey),
             ],
           ),
         ),

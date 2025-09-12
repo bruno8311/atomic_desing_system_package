@@ -30,16 +30,18 @@ class AtomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color resolvedColor = color ?? () {
-      switch (type) {
-        case AtomButtonType.danger:
-          return AppColors.danger;
-        case AtomButtonType.success:
-          return AppColors.success;
-        case AtomButtonType.primary:
-          return AppColors.primary;
-      }
-    }();
+    Color resolvedColor =
+        color ??
+        () {
+          switch (type) {
+            case AtomButtonType.danger:
+              return AppColors.danger;
+            case AtomButtonType.success:
+              return AppColors.success;
+            case AtomButtonType.primary:
+              return AppColors.primary;
+          }
+        }();
     Color resolvedTextColor = textColor ?? AppColors.textLight;
     return ElevatedButton(
       onPressed: onPressed,
@@ -49,7 +51,8 @@ class AtomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         elevation: elevation,
-        padding: padding ?? const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        padding:
+            padding ?? const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       ),
       child: Text(
         label,
