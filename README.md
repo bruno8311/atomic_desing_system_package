@@ -4,7 +4,7 @@
 Paquete de sistema de diseño para Flutter basado en los principios de Atomic Design.
 
 ## Getting started
-fake_store_api_package: 3
+fake_store_api_package: 4
 
 ## Usage
 
@@ -65,12 +65,20 @@ flutter run
 
 ## Descripción de los Templates
 
-- **TemplateDashboardPage:**  
+ **TemplateBasePage (genérico):**  
+	Plantilla base genérica, flexible y reutilizable que permite construir cualquier página con header, body y footer. Soporta tres modos de body: lista de cards, body personalizado o body descriptivo (con formulario). Es la base sobre la que se construyen los demás templates y puede ser extendida para crear nuevas páginas rápidamente.
+
 	Plantilla de dashboard personalizable que integra header con información de usuario, carruseles de imágenes y descripciones, tarjetas de acceso rápido y un footer configurable. Ideal para mostrar información resumida y accesos directos en una sola pantalla.
 
 - **TemplateLoginPage:**  
 	Plantilla de página de inicio de sesión con campos para email y contraseña, opción de recuperar contraseña, título, subtítulo y posibilidad de mostrar flecha de retroceso. Facilita la implementación de pantallas de autenticación consistentes.
 
-- **SearchResultsPage:**  
-	Plantilla para mostrar resultados de búsqueda, con header configurable, botones de navegación, tarjetas de resultados con imágenes y descripciones, y footer personalizable. Perfecta para aplicaciones que requieren mostrar listas de resultados filtrados o buscados.
+- **TemplateListCarts:**  
+	Plantilla para mostrar una lista de elementos (por ejemplo, carritos o productos) con header de búsqueda, cards con imagen y descripción, y footer configurable. Útil para catálogos, listas de compras o cualquier listado de ítems.
+
+- **TemplatetDetailPage:**  
+	Plantilla de detalle, mostrando imagen, título, precio, categoría, descripción y botón de acción. Ideal para páginas de detalle en e-commerce o apps de catálogo.
+
+- **TemplateContactPage:**  
+	Plantilla de contacto o formulario de consulta, con título, datos de contacto, campo de mensaje y botón de envío. Perfecta para páginas de soporte, contacto o feedback.
 
