@@ -39,7 +39,7 @@ Este paquete implementa un sistema de diseño completo estructurado en cinco niv
 - **Átomos:** Elementos básicos como botones, inputs, iconos, imágenes, textos, avatares, etc. (ubicados en `lib/presentation/atoms/`).
 - **Moléculas:** Combinaciones simples de átomos, como campos de formulario, tarjetas, barras de búsqueda, modales, etc. (`lib/presentation/molecules/`).
 - **Organismos:** Componentes complejos y autosuficientes, como formularios completos, headers, footers, listas y carruseles. (`lib/presentation/organisms/`).
-- **Plantillas:** Estructuras de página reutilizables, como dashboards, páginas de login y resultados de búsqueda. (`lib/presentation/templates/`).
+- **Plantillas:** Incluye un template base genérico y plantillas especializadas reutilizables para dashboards, páginas de login, contacto, detalle de producto, listas y más. (`lib/presentation/templates/`).
 - **Páginas:** Ejemplos de páginas completas usando los componentes anteriores. (`lib/presentation/pages/`).
 
 ## Ejemplo tipo Showcase
