@@ -1,3 +1,4 @@
+import 'package:atomic_desing_system_package/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../templates/template_detail_page.dart';
 
@@ -46,7 +47,7 @@ class PageDetail extends StatelessWidget {
           ).showSnackBar(const SnackBar(content: Text('Privacidad')));
         },
       ],
-      footerBackgroundColor: Color(0xFFEEEEEE),
+      footerBackgroundColor: AppColors.background,
     );
   }
 }

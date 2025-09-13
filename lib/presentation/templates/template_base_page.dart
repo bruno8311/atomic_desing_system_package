@@ -1,3 +1,4 @@
+import 'package:atomic_desing_system_package/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../organisms/organism.dart';
 import '../atoms/atoms.dart';
@@ -9,6 +10,8 @@ enum _BodyType { list, custom, descriptive }
 class TemplateBasePage extends StatefulWidget {
   final Widget header;
   final Widget footer;
+  final Color? headerBackgroundColor;
+  final Color? footerBackgroundColor;
 
   // Parámetros para lista de cards (opcional)
   final List<String>? imageUrls;
@@ -36,6 +39,8 @@ class TemplateBasePage extends StatefulWidget {
     super.key,
     required this.header,
     required this.footer,
+    this.headerBackgroundColor,
+    this.footerBackgroundColor,
     // Body personalizado
     this.body,
     // Body con lista de elementos
@@ -100,11 +105,33 @@ class _TemplateBasePageState extends State<TemplateBasePage> {
     // Validación de exclusividad de parámetros
     _validateExclusiveParams();
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          widget.header,
-          Expanded(child: _buildBodyContent()),
-          widget.footer,
+          // Fondo header (arriba)
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              height: MediaQuery.of(context).padding.top + 60, // 60: altura aprox header
+              color: widget.headerBackgroundColor ?? AppColors.primary,            ),
+          ),
+          // Fondo footer (abajo)
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: MediaQuery.of(context).padding.bottom + 60, // 60: altura aprox footer
+              color: widget.footerBackgroundColor ?? AppColors.background,
+            ),
+          ),
+          // Contenido real respetando SafeArea
+          SafeArea(
+            child: Column(
+              children: [
+                widget.header,
+                Expanded(child: _buildBodyContent()),
+                widget.footer,
+              ],
+            ),
+          ),
         ],
       ),
     );

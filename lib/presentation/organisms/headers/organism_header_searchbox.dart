@@ -55,7 +55,7 @@ class OrganismHeaderSearchBox extends StatelessWidget {
       padding: EdgeInsets.only(
         left: 0,
         right: paddingHorizontal,
-        top: paddingVertical + 16,
+        top: paddingVertical,
         bottom: paddingVertical,
       ),
       decoration: BoxDecoration(

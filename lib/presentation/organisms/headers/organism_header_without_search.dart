@@ -44,7 +44,7 @@ class OrganismHeaderWithoutSearch extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(
         left: 0,
-        top: paddingVertical + 16,
+        top: paddingVertical,
         right: paddingHorizontal,
         bottom: paddingVertical,
       ),

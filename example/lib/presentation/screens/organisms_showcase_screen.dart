@@ -81,7 +81,6 @@ class OrganismsShowcaseScreen extends StatelessWidget {
           OrganismFooter(
             copyright: '© 2025 Mi Empresa. Todos los derechos reservados.',
             icons: [Icons.facebook, Icons.email],
-            backgroundColor: Colors.grey.shade200,
             paddingHorizontal: 20,
             paddingVertical: 16,
             labels: ['Contacto', 'Ayuda'],

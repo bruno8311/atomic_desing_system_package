@@ -1,3 +1,4 @@
+import 'package:atomic_desing_system_package/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../templates/template_dashboard_page.dart';
 
@@ -51,6 +52,7 @@ class PageDashboard extends StatelessWidget {
       footerIcons: const [Icons.facebook, Icons.email],
       footerLabels: const ['Contacto', 'Ayuda'],
       footerActions: [() {}, () {}],
+      footerBackgroundColor: AppColors.background
     );
   }
 }

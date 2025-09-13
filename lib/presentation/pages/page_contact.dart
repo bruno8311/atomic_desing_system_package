@@ -1,3 +1,4 @@
+import 'package:atomic_desing_system_package/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../templates/template_contact_page.dart';
 
@@ -42,7 +43,7 @@ class PageContact extends StatelessWidget {
           ).showSnackBar(const SnackBar(content: Text('Privacidad')));
         },
       ],
-      footerBackgroundColor: const Color(0xFFEEEEEE),
+      footerBackgroundColor: AppColors.background,
     );
   }
 }

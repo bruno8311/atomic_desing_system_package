@@ -14,7 +14,7 @@ class TemplatesShowcaseScreen extends StatelessWidget {
     const detailTitle = 'White Gold Plated Princess';
     const detailImageUrl = 'https://images.unsplash.com/photo-1682685797229-b2930538da47?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Plantillas'),
@@ -27,7 +27,8 @@ class TemplatesShowcaseScreen extends StatelessWidget {
               Tab(text: 'Dashboard'),
               Tab(text: 'Lista'),
               Tab(text: 'Detalle'),
-              Tab(text: 'Detalle 2'),
+              Tab(text: 'Contacto'),
+              Tab(text: 'Base'),
             ],
           ),
           backgroundColor: Colors.blue,
@@ -148,7 +149,6 @@ class TemplatesShowcaseScreen extends StatelessWidget {
                   );
                 },
               ],
-              footerBackgroundColor: Color(0xFFEEEEEE),
             ),
             //Plantilla de Búsqueda
             TemplateListCarts(
@@ -299,6 +299,35 @@ class TemplatesShowcaseScreen extends StatelessWidget {
                 },
               ],
               footerBackgroundColor: Color(0xFFEEEEEE),
+            ),
+            TemplateBasePage(
+              header: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.amber[200],
+                  border: Border.all(color: Colors.black, width: 2),
+                ),
+                child: const Text('Header de ejemplo', style: TextStyle(fontSize: 16)),
+              ),
+              body: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black, width: 2),
+                ),
+                child: const Center(child: Text('Contenido del cuerpo')),
+              ),
+              footer: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.lightBlueAccent,
+                  border: Border.all(color: Colors.black, width: 2),
+                ),
+                child: const Text('Footer de ejemplo', style: TextStyle(fontSize: 16)),
+              ),
             ),
           ],
         ),

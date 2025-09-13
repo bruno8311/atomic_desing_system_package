@@ -33,7 +33,7 @@ class OrganismFooter extends StatelessWidget {
         vertical: paddingVertical,
       ),
       decoration: BoxDecoration(
-        color: backgroundColor ?? Theme.of(context).colorScheme.surface,
+        color: backgroundColor ?? AppColors.background,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(24),
           topRight: Radius.circular(24),
