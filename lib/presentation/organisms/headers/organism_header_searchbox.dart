@@ -170,7 +170,7 @@ class OrganismHeaderSearchBox extends StatelessWidget {
             padding: EdgeInsets.only(left: paddingHorizontal),
             child: MoleculeSearchBar(
               label: searchLabel,
-              controller: searchController!,
+              controller: searchController ?? TextEditingController(),
               icon: searchIcon ?? Icons.search,
               onSearch: onSearch,
               hintText: hintText,

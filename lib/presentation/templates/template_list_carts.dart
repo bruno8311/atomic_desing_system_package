@@ -16,12 +16,13 @@ class TemplateListCarts extends StatelessWidget {
   final VoidCallback headerOnHome;
   final double headerUserNameFontSize;
   final double headerAvatarRadius;
+  final TextEditingController? headerSearchController;
 
   // Body (Cards)
   final List<String> bodyCardImageUrls;
   final List<String> bodyCardDescriptions;
   final List<VoidCallback?> bodyCardOnSeeMore;
-  final Widget? bodyWhenEmpty; // NUEVO: Widget a mostrar cuando el body está vacío
+  final Widget? bodyWhenEmpty;
 
   // Footer
   final String footerCopyright;
@@ -47,6 +48,7 @@ class TemplateListCarts extends StatelessWidget {
     this.headerOnSearch,
     this.headerUserNameFontSize = 14,
     this.headerAvatarRadius = 20,
+    this.headerSearchController,
 
     // Body
     required this.bodyCardImageUrls,
@@ -76,7 +78,7 @@ class TemplateListCarts extends StatelessWidget {
       userName: headerUserName,
       paddingHorizontal: headerPaddingHorizontal,
       paddingVertical: headerPaddingVertical,
-      searchController: TextEditingController(),
+      searchController: headerSearchController,
       hintText: headerHintText,
       showBackArrow: headerShowBackArrow,
       onSearch: headerOnSearch,

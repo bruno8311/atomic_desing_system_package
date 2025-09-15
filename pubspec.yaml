@@ -1,6 +1,6 @@
 name: atomic_desing_system_package
 description: "Sistema de diseño para Flutter basado en Atomic Design, con componentes reutilizables y plantillas listas para usar."
-version: 0.0.5
+version: 0.0.7
 homepage: https://github.com/bruno8311/fake_store_api_package
 environment:
   sdk: ^3.8.1
