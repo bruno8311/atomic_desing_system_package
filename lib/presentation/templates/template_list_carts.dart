@@ -21,6 +21,7 @@ class TemplateListCarts extends StatelessWidget {
   final List<String> bodyCardImageUrls;
   final List<String> bodyCardDescriptions;
   final List<VoidCallback?> bodyCardOnSeeMore;
+  final Widget? bodyWhenEmpty; // NUEVO: Widget a mostrar cuando el body está vacío
 
   // Footer
   final String footerCopyright;
@@ -51,6 +52,7 @@ class TemplateListCarts extends StatelessWidget {
     required this.bodyCardImageUrls,
     required this.bodyCardDescriptions,
     required this.bodyCardOnSeeMore,
+    this.bodyWhenEmpty,
 
     // Footer
     this.footerCopyright = '© 2025 Mi Empresa. Todos los derechos reservados.',
@@ -100,6 +102,7 @@ class TemplateListCarts extends StatelessWidget {
       imageUrls: bodyCardImageUrls,
       descriptions: bodyCardDescriptions,
       onSeeMoreCallbacks: bodyCardOnSeeMore,
+      isList: true,
     );
   }
 }

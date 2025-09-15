@@ -87,6 +87,7 @@ class TemplateContactPage extends StatelessWidget {
       descriptiveButtonText: descriptiveButtonText,
       descriptiveButtonDependsOnText: descriptiveButtonDependsOnText,
       descriptiveOnButtonPressed: descriptiveOnButtonPressed,
+      isList: false,
     );
   }
 }

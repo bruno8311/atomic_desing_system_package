@@ -155,6 +155,7 @@ class TemplatesShowcaseScreen extends StatelessWidget {
               headerUserName: userName,
               headerUserImageUrl: userImageUrl,
               headerTitle: searchTitle,
+              
               headerOnSearch: (text) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Se buscó el valor $text')),

@@ -14,9 +14,11 @@ class TemplateBasePage extends StatefulWidget {
   final Color? footerBackgroundColor;
 
   // Parámetros para lista de cards (opcional)
+  final bool isList;
   final List<String>? imageUrls;
   final List<String>? descriptions;
   final List<VoidCallback?>? onSeeMoreCallbacks;
+  final Widget? bodyWhenEmpty;
 
   // Parámetros para body descriptivo (opcional)
   final String? descriptiveTitle;
@@ -44,9 +46,11 @@ class TemplateBasePage extends StatefulWidget {
     // Body personalizado
     this.body,
     // Body con lista de elementos
+    this.isList = false,
     this.imageUrls,
     this.descriptions,
     this.onSeeMoreCallbacks,
+    this.bodyWhenEmpty,
     // Body descriptivo
     this.descriptiveTitle,
     this.descriptiveSubtitle,
@@ -56,15 +60,14 @@ class TemplateBasePage extends StatefulWidget {
     this.descriptiveButtonDependsOnText = false,
     this.descriptiveOnButtonPressed,
   }) : assert(
-         (imageUrls == null &&
-                 descriptions == null &&
-                 onSeeMoreCallbacks == null) ||
-             (imageUrls != null &&
-                 descriptions != null &&
-                 onSeeMoreCallbacks != null &&
-                 imageUrls.length == descriptions.length &&
-                 descriptions.length == onSeeMoreCallbacks.length),
-         'Si se usa la lista, los 3 parámetros deben estar presentes y tener el mismo tamaño.',
+         !isList || (
+           imageUrls != null &&
+           descriptions != null &&
+           onSeeMoreCallbacks != null &&
+           imageUrls.length == descriptions.length &&
+           descriptions.length == onSeeMoreCallbacks.length
+         ),
+         'Si isList es true, los 3 parámetros deben estar presentes y tener el mismo tamaño.',
        ),
        assert(
          body != null ||
@@ -171,6 +174,10 @@ class _TemplateBasePageState extends State<TemplateBasePage> {
     final _BodyType type = _getBodyType();
     switch (type) {
       case _BodyType.list:
+        // Si descriptions está vacío, mostrar bodyWhenEmpty o texto por defecto
+        if (widget.descriptions == null || widget.descriptions!.isEmpty) {
+          return widget.bodyWhenEmpty ?? const Center(child: Text('No se encontraron elementos'));
+        }
         return ListView.builder(
           padding: const EdgeInsets.all(0),
           itemCount: widget.imageUrls!.length,
@@ -192,12 +199,8 @@ class _TemplateBasePageState extends State<TemplateBasePage> {
 
   /// Determina el tipo de body a mostrar según los parámetros recibidos.
   _BodyType _getBodyType() {
-    final bool isListParams =
-        widget.imageUrls != null &&
-        widget.descriptions != null &&
-        widget.onSeeMoreCallbacks != null &&
-        widget.imageUrls!.isNotEmpty;
-    if (isListParams) {
+    // Si isList está en true, forzar tipo lista
+    if (widget.isList) {
       return _BodyType.list;
     } else if (widget.body != null) {
       return _BodyType.custom;
